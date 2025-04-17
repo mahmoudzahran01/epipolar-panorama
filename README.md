@@ -16,11 +16,11 @@ The green lines show the epipolar lines for the corresponding points (marked in 
 
 #### Hill Panorama
 **Input**: Images in `data/hill/`  
-**Output**: [Hill Panorama](results/hill.png)
+**Output**: ![Hill Panorama](results/hill.png)
 
 #### TV Panorama
 **Input**: Images in `data/tv/`  
-**Output**: [TV Panorama](results/tv.png)
+**Output**: ![TV Panorama](results/tv.png)
 
 ## Project Structure
 
