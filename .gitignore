@@ -57,13 +57,18 @@ venv.bak/
 ehthumbs.db
 Thumbs.db
 
-# Data folders
-data/
-*.zip
-*.jpg
-*.JPG
-*.png
-*.mp4
+# Data folders - general exclusions
+data/*
+!data/README.md
+!data/.gitkeep
+results/*
+!results/README.md
+!results/.gitkeep
+
+# Exception for specific result files
+!results/epi.png
+!results/hill.png
+!results/tv.png
 
 # Compiled Python modules
 *.pyc

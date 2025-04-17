@@ -8,7 +8,7 @@ This repository contains implementations of two computer vision algorithms:
 ## Example Results
 
 ### Epipolar Geometry
-![Epipolar Lines](results/epi.jpg)
+![Epipolar Lines](results/epi.png)
 
 The green lines show the epipolar lines for the corresponding points (marked in red). Notice how these points follow the epipolar constraint.
 
@@ -16,11 +16,11 @@ The green lines show the epipolar lines for the corresponding points (marked in 
 
 #### Hill Panorama
 **Input**: Images in `data/hill/`  
-**Output**: [Hill Panorama](results/hill.jpg)
+**Output**: [Hill Panorama](results/hill.png)
 
 #### TV Panorama
 **Input**: Images in `data/tv/`  
-**Output**: [TV Panorama](results/tv.jpg)
+**Output**: [TV Panorama](results/tv.png)
 
 ## Project Structure
 
