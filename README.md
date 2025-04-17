@@ -34,9 +34,9 @@ The green lines show the epipolar lines for the corresponding points (marked in 
 │   ├── hill/             # Hill panorama input images
 │   └── tv/               # TV panorama input images
 ├── results/              # Results directory
-│   ├── epi.jpg           # Epipolar geometry visualization
-│   ├── hill.jpg          # Hill panorama result
-│   └── tv.jpg            # TV panorama result
+│   ├── epi.png           # Epipolar geometry visualization
+│   ├── hill.png          # Hill panorama result
+│   └── tv.png            # TV panorama result
 ├── notebooks/            # Jupyter notebooks
 ├── src/                  # Source code
 │   ├── __init__.py
@@ -48,11 +48,41 @@ The green lines show the epipolar lines for the corresponding points (marked in 
 
 ## Setup and Installation
 
-### Option 1: Using pip
+### 1. Download Required Data
+
+Before running the code, you need to download the required datasets:
+
+1. **Epipolar Geometry Data**:
+   - Download [Part1_data.zip](https://drive.google.com/file/d/1cn3_SscjlLrf4BzUWe8MV-XqMqBY4Nj_/view)
+   - Extract to `data/Part1_data/`
+
+2. **Hill Panorama Images**:
+   - Download [hill.zip](https://drive.google.com/file/d/1fnD0hJ8-_Rngsc-m96ghKtdZAMf0VTjy/view)
+   - Extract to `data/hill/`
+
+3. **TV Panorama Images**:
+   - Download [tv.zip](https://drive.google.com/file/d/1v2BFVMV0McuD5BstLvDmo1U9MrFAByS5/view)
+   - Extract to `data/tv/`
+
+You can use these commands to set up the data directory structure:
+
+```bash
+# Create data directories
+mkdir -p data/Part1_data data/hill data/tv
+
+# After manually downloading, you can extract using:
+unzip Part1_data.zip -d data/Part1_data
+unzip hill.zip -d data/hill
+unzip tv.zip -d data/tv
+```
+
+### 2. Install Dependencies
+
+#### Option 1: Using pip
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/epipolar-panorama.git
+   git clone https://github.com/mahmoudzahran01/epipolar-panorama.git
    cd epipolar-panorama
    ```
 
@@ -63,11 +93,11 @@ The green lines show the epipolar lines for the corresponding points (marked in 
    pip install -r requirements.txt
    ```
 
-### Option 2: Using conda
+#### Option 2: Using conda
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/epipolar-panorama.git
+   git clone https://github.com/mahmoudzahran01/epipolar-panorama.git
    cd epipolar-panorama
    ```
 
@@ -125,21 +155,28 @@ F = estimate_fundamental_matrix(x1, y1, x2, y2)
 img1 = cv2.imread('./data/Part1_data/chapel00.png')
 img2 = cv2.imread('./data/Part1_data/chapel01.png')
 result_img = plot_epipolar_lines(img1, img2, x1, y1, x2, y2, F, num_points=7)
-cv2.imwrite('results/epi.jpg', result_img)
+cv2.imwrite('results/epi.png', result_img)
 
 # Test image stitching with hill dataset
 hill_images = load_images_from_directory('./data/hill')
 stitched_23 = stitch_images(hill_images[1], hill_images[2])
 final_hill_panorama = stitch_images(hill_images[0], stitched_23)
-cv2.imwrite('results/hill.jpg', final_hill_panorama)
+cv2.imwrite('results/hill.png', final_hill_panorama)
 
 # Test image stitching with tv dataset
 tv_images = load_images_from_directory('./data/tv')
 stitched_23 = stitch_images(tv_images[1], tv_images[2])
 final_tv_panorama = stitch_images(tv_images[0], stitched_23)
-cv2.imwrite('results/tv.jpg', final_tv_panorama)
+cv2.imwrite('results/tv.png', final_tv_panorama)
 
 print("Testing complete! Check the results directory for output images.")
+```
+
+You can also use our provided script to run all examples at once:
+
+```bash
+# Run all examples
+python run_examples.py
 ```
 
 ## Features
